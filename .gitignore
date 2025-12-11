@@ -49,3 +49,5 @@ docker-data/
 
 # Misc
 .eslintcache
+
+/generated/prisma
