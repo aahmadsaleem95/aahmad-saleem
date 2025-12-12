@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "1340890a-e381-4b04-ac1c-08c20ff5c873",
+		"name": "AI Chat Backend",
+		"description": "Postman collection for AI Chat backend with authentication, chat, and subscription modules",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32164518"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"alice@example.com\",\n  \"password\": \"password123\",\n  \"name\": \"Alice\"\n}"
+						},
+						"url": {
+							"raw": "{{basicURL}}/api/auth/signup",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"alice@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{basicURL}}/api/auth/login",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{basicURL}}/api/auth/logout",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basicURL}}/api/auth/me",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Ask Question",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"question\": \"Explain domain-driven design\"\n}"
+						},
+						"url": {
+							"raw": "{{basicURL}}/api/chat/ask",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"ask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basicURL}}/api/chat/history",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basicURL}}/api/chat/usage",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"usage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "Create Subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tier\": \"ENTERPRISE\",\n  \"billingCycle\": \"MONTHLY\",\n  \"autoRenew\": true\n}"
+						},
+						"url": {
+							"raw": "{{basicURL}}/api/subscriptions/create",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"subscriptions",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{basicURL}}/api/subscriptions/cancel/1",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"subscriptions",
+								"cancel",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active Subscriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basicURL}}/api/subscriptions/active",
+							"host": [
+								"{{basicURL}}"
+							],
+							"path": [
+								"api",
+								"subscriptions",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "basicURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
