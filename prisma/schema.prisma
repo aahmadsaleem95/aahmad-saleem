@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -16,7 +17,10 @@ model User {
   id              Int              @id @default(autoincrement())
   email           String           @unique
   name            String?
+  password        String
   createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @default(now())
+  freeMessagesUsed Int            @default(0)
   chatMessages    ChatMessage[]
   subscriptions   Subscription[]
 }
@@ -27,8 +31,8 @@ model ChatMessage {
   question     String
   answer       String
   tokensUsed  Int
-  createdAt   DateTime @default(now())
-
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @default(now())
   user        User     @relation(fields: [userId], references: [id])
 }
 
@@ -45,6 +49,8 @@ model Subscription {
   renewalDate   DateTime
   autoRenew     Boolean        @default(true)
   isActive      Boolean        @default(true)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @default(now())
 
   user          User           @relation(fields: [userId], references: [id])
 }
