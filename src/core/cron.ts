@@ -14,7 +14,7 @@ export function startCronJobs(prisma: PrismaClient) {
       const now = new Date();
 
       // Reset free messages on the 1st of each month
-      if (now.getDate() === 12) {
+      if (now.getDate() === 1) {
         await prisma.user.updateMany({
           data: { freeMessagesUsed: 0 },
         });
